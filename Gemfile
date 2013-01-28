@@ -1,6 +1,8 @@
 source :rubygems
 
 gem 'sinatra'
+gem 'redis'
+gem 'rqrcode'
 
 group :development do
   gem 'guard'
