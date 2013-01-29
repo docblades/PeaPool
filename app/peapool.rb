@@ -1,8 +1,10 @@
 require 'sinatra/base'
 require './config/default.rb'
+require 'redis'
+require 'uuid'
 
 class PeaPool < Sinatra::Base
-
+  
   helpers do
     def base_url
       "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
@@ -88,6 +90,4 @@ class PeaPool < Sinatra::Base
     end    
   end
 
-  
-  run! if app_file = $0
 end
