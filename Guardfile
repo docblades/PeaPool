@@ -16,3 +16,4 @@ guard 'redis' do
   watch(/^(app|lib|config)\/.*\.rb$/)
   watch(/^config\/redis.yaml$/)
 end
+
