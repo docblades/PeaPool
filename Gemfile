@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'redis'
 gem 'rqrcode'
 gem 'uuid'
+gem 'thin'
 
 group :development do
   gem 'guard'
