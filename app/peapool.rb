@@ -2,6 +2,7 @@ require 'sinatra/base'
 require './config/default.rb'
 require 'redis'
 require 'uuid'
+require 'uri'
 
 class PeaPool < Sinatra::Base
   
@@ -20,7 +21,15 @@ class PeaPool < Sinatra::Base
     def redis
       return @redis if defined? @redis
 
-      @redis = Redis.new
+      if ENV['REDISTOGO_URL']
+        uri = URI.parse(ENV['REDISTOGO_URL'])
+        @redis = Redis.new(:host => uri.host,
+                           :port => uri.port,
+                           :password => uri.password)
+      else
+        @redis = Redis.new
+      end
+      
     end
 
     def four_oh_four
